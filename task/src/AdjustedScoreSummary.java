@@ -17,7 +17,7 @@ public class AdjustedScoreSummary {
                 .filter(n -> n >0 && n<=100)
                 .map(n -> n + 5)
                 .filter(n -> n>=100)
-                .mapToInt(n-> n = 100)
+                .mapToInt(n-> 100)
                 .sum();
         System.out.println("보정 점수 합계: " + (total + total2));
     }
