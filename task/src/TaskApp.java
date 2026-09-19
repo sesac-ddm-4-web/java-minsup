@@ -38,7 +38,7 @@ public class TaskApp {
                         break;
                     case 3:
                         // TODO: 미완료 항목만 출력하세요.
-                        printListCompleted(map);
+                        printListNotCompleted(map);
 //                        System.out.println("미완료 목록 조회 기능을 구현하세요.");
                         break;
                     case 4: {
@@ -82,11 +82,11 @@ public class TaskApp {
         if(task == null){
             System.out.println("해당 id에 목록이 없음");
         }else {
-            task.completed = "완료";
+            task.setCompleted("완료");
         }
     }
 
-    private static void printListCompleted(Map<Integer, Task> map){
+    private static void printListNotCompleted(Map<Integer, Task> map){
         for(Integer id : map.keySet()){
             Task task = map.get(id);
             if(task.getCompleted().equals("미완료")){
