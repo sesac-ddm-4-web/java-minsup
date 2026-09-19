@@ -10,6 +10,7 @@ public class Bus {
         return answer;
     }
     public int func1(int num){
+        // 좌석 - 승객 수 -> 양수일 때 그 수를 반환해야함
         if(0 > num){
             return 0;
         }
