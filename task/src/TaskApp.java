@@ -11,7 +11,8 @@ public class TaskApp {
         // 목록은 아래 while 바깥에 두어 메뉴를 바꿔도 유지되도록 합니다.
 
         try (Scanner scanner = new Scanner(System.in)) {
-            Map<Integer, Task> map = new HashMap<>();
+            // 수정
+            Map<Integer, Task> map = new LinkedHashMap<>();
             map.put(1, new Task("자바 복습", "미완료"));
             map.put(2, new Task("예외 처리 정리", "완료"));
             map.put(3, new Task("파일 입출력 예제 실행", "미완료"));
@@ -78,6 +79,11 @@ public class TaskApp {
     }
 
     private static void changeCompleted(Map<Integer, Task> map, int targetId){
+        // TODO 수정
+        if(map.get(targetId).getCompleted().equals("완료")){
+            System.out.println("이미 완료된 항목입니다");
+            return;
+        }
         Task task = map.get(targetId);
         if(task == null){
             System.out.println("해당 id에 목록이 없음");
@@ -87,11 +93,19 @@ public class TaskApp {
     }
 
     private static void printListNotCompleted(Map<Integer, Task> map){
+        // TODO 수정
+        int notCompletedCount = 0;
+
         for(Integer id : map.keySet()){
             Task task = map.get(id);
             if(task.getCompleted().equals("미완료")){
                 System.out.println(id + ". " + task.getTitle() + " / " + task.getCompleted());
+                notCompletedCount++;
             }
+        }
+
+        if(notCompletedCount == 0){
+            System.out.println("미완료 항목이 없습니다.");
         }
     }
 
