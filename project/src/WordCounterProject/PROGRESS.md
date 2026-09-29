@@ -20,7 +20,7 @@
 | 여러 파일 순차 처리 | 구현 | samples/equivalent |
 | 상위 단어·특정 단어 조회 | 구현 | samples/equivalent/basic.txt |
 | 전체 결과 저장 | 구현 | samples/equivalent/basic.txt / out/counts.tsv |
-| 잘못된 입력·실패 파일·빈 파일 처리 |  |  |
+| 잘못된 입력·실패 파일·빈 파일 처리 | 구현 | samples/invalid/missing-column.csv |
 
 전체 처리 흐름은 간단히 3~4줄로 적기:
 `Main → numCheck → startNewAnalysis → processFile → 파서 선택 → 정규식 토큰화 → AnalysisResult 누적 → 요약 출력`
