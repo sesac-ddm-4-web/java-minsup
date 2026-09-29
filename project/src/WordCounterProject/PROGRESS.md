@@ -8,7 +8,7 @@
 | 실행 클래스 | `kr.sesac.wordcounter.Main` |
 | 작업 디렉터리 | [ ] (IntelliJ Run 설정의 Working directory) |
 | 외부 라이브러리 | Apache Commons CSV ([ ] 버전) |
-| 설정 위치와 현재 값 | `CsvParser.TARGET_COLUMNS` = `List.of("text")` |
+| 설정 위치와 현재 값 | `CsvParser.TARGET_COLUMNS` = `List.of("text")`, 'TsvParser.TARGET_COLUMNS` = `List.of("document")`, 'Html.SELECTOR = "#content" |
 | 결과 저장 위치 | `<작업 디렉터리>/out/counts.tsv` |
 
 ## 2. 구현한 기능과 확인한 입력·결과
