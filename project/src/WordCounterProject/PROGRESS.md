@@ -74,20 +74,16 @@ CSV의 분석 열은 `text`입니다. 아래 입력은 각각 따로 실행합�
   - 입력: 정상 `a.txt`, 형식 오류 `bad.csv`가 든 폴더
   - 결과: 성공 [ ]개 / 실패 [ ]개, 집계에 `a.txt`의 단어만 반영됨 [ ]
 
-### 문제 3. 닫히지 않은 따옴표가 있는 CSV의 예외 처리
+### 문제 3. 문제라기 보다는 고민..?
 
-- **문제**: [실제로 겪은 증상을 적기. 예: brokenquote.csv 분석 시 ...]
-- **원인**: Commons CSV는 레코드를 읽다 생긴 `IOException`을 `UncheckedIOException`
-  으로 감싸 던진다. 이는 언체크 예외라 컴파일러가 처리를 강제하지 않고,
-  `parse()`가 선언한 예외(`FileParseException`, `IOException`)에도 없었다.
+- **문제**: 라이브러리 예외 노출
+- **고민**: Commons CSV는 레코드를 읽다 생긴 `IOException`을 `UncheckedIOException`
+  으로 감싸 던진다. 이는 언체크 예외라 컴파일러가 처리를 강제하지 않는다. 이를 예외를 정의하지 않고 그냥 호출부에서 잡게할 지
 - **해결**: `CsvParser`에서 `UncheckedIOException`을 잡아 `FileParseException`으로
   바꿔 던지고, 원본은 `cause`로 보존했다. 이를 위해
-  `(String message, Throwable cause)` 생성자를 추가했다.
+  `(String message, Throwable cause)` 생성자를 추가했다. 
 - **확인한 입력과 결과**:
-  - 입력: 본문 행에서 따옴표가 닫히지 않은 `brokenquote.csv`
-  - 결과: 실패 1개로 집계, 실패 상세 출력, 프로그램은 계속 실행됨 [ ]
-  - 실패 상세에 실제로 출력된 메시지: [ ]
-
+  - 결과: 결과는 동이하다, 하지만 라이브러리 안 예외를 굳이 호출부가 알아야할 필요가 없다. 지금은 processfile() 메서드 하나만 접근하고 있기에 큰 문제는 없다
 ## 5. AI 활용 내용과 직접 확인한 방법
 
 | AI에게 물은 것 | 받은 답 | 직접 확인한 방법 |
