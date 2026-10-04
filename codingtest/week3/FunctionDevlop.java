@@ -26,20 +26,21 @@ public class FunctionDevlop {
         List<Integer> list = new ArrayList<>();
         
         // 2. 첫 번째 기능이 배포되는 날을 기준일로 설정
-        int maxDay = days[0]; 
+        int standard = days[0]; 
         int count = 1; // 첫 번째 기능 포함 1부터 시작
 
         for (int i = 1; i < n; i++) {
             // 뒤의 기능이 앞선 기능(maxDay)보다 일찍 끝나거나 같은 날 끝나면 같이 배포
-            if (days[i] <= maxDay) {
+            if (days[i] <= standard) {
                 count++;
             } else {
                 // 앞선 기능보다 더 오래 걸리는 기능을 만나면 기존 그룹 배포 확정
                 list.add(count);
-                maxDay = days[i]; // 새로운 배포 기준일로 갱신
+                standard = days[i]; // 새로운 배포 기준일로 갱신
                 count = 1;        // 새 그룹 카운트 초기화
             }
         }
+        //if문으로 끝까지 갔을 수도 있잖아, 그리고 다시 시작했는데 뒤에 비교대상이 없으면 1이기때문
         // 마지막 배포 그룹 추가
         list.add(count);
 
